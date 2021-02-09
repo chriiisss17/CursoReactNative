@@ -1,49 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
-import colors,{randomColor} from '../../config/colors';
+import {FlatList} from 'react-native-gesture-handler';
+import colors, {allColors} from '../../config/colors';
+
+const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     margin: 10,
     borderWidth: 5,
   },
-  containerTitle:{
+  containerTitle: {
     width: '95%',
     alignSelf: 'center',
     borderWidth: 1,
     borderRadius: 10,
-    backgroundColor: colors.amethyst,
+    backgroundColor: randomColor,
     marginTop: 4,
     marginLeft: 2,
     marginRight: 2,
   },
-  title:{
+  title: {
     alignSelf: 'center',
     fontSize: 24,
   },
-  containerImg:{
+  containerImg: {
     height: 400,
     width: '90%',
     borderWidth: 1,
     alignSelf: 'center',
   },
-  image:{
+  image: {
     height: '100%',
     width: '100%',
   },
-  containerDescription:{
+  containerDescription: {
     alignSelf: 'center',
     borderWidth: 1,
     borderRadius: 10,
     backgroundColor: colors.concrete,
     width: '95%',
   },
-  description:{
+  description: {
     fontSize: 14,
     margin: 5,
   },
-  containerComics:{
+  containerComics: {
     width: '90%',
     borderWidth: 1,
     alignSelf: 'center',
@@ -54,60 +56,64 @@ const styles = StyleSheet.create({
     backgroundColor: colors.clouds,
     opacity: 0.8,
   },
-  comics:{
+  comics: {
     fontSize: 18,
     color: 'black',
   },
-  backImg:{
+  backImg: {
     width: '100%',
     height: '100%',
   },
-})
+});
 
 const Character = ({currentChar}) => {
   if (currentChar) {
     return (
-        <>
+      <>
         <FlatList
           data={currentChar}
-          keyExtractor={({id})=>id.toString()}
+          keyExtractor={({id}) => id.toString()}
           renderItem={({
             item: {
               name,
               description,
               thumbnail: {path, extension},
-              comics: {available,
-                items},
+              comics: {available, items},
             },
           }) => (
             <View style={styles.container}>
-              <ImageBackground source={{uri: path+'.'+extension}}
+              <ImageBackground
+                source={{uri: path + '.' + extension}}
                 style={{
                   flex: 1,
-                  resizeMode: "cover",
-                  justifyContent: "center"
-                }}
-              >
-              <View style={styles.containerTitle}>
-                <Text style={styles.title}>{name}</Text>
-              </View>
-              <View style={styles.containerImg}>
-                <Image 
-                  style={styles.image}
-                  source={{uri:path+'.'+extension}}
-                />
-              </View>
-              <View style={styles.containerDescription}>
-                <Text style={styles.description}>{description || "Sin descripción"}</Text>
-              </View>
-              <View style={styles.containerComics}>
-                <Text style={styles.comics}>{`Comics disponibles: ${available}`}</Text>
-              </View>
+                  resizeMode: 'cover',
+                  justifyContent: 'center',
+                }}>
+                <View style={styles.containerTitle}>
+                  <Text style={styles.title}>{name}</Text>
+                </View>
+                <View style={styles.containerImg}>
+                  <Image
+                    style={styles.image}
+                    source={{uri: path + '.' + extension}}
+                  />
+                </View>
+                <View style={styles.containerDescription}>
+                  <Text style={styles.description}>
+                    {description || 'Sin descripción'}
+                  </Text>
+                </View>
+                <View style={styles.containerComics}>
+                  <Text
+                    style={
+                      styles.comics
+                    }>{`Comics disponibles: ${available}`}</Text>
+                </View>
               </ImageBackground>
             </View>
           )}
         />
-        </>
+      </>
     );
   }
   return <></>;

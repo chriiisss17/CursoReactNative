@@ -8,6 +8,7 @@ import Login from '../screen/Login/Login';
 import {useContext} from 'react/cjs/react.development';
 import {LoginContext} from '../context/AuthContext';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import PhotoScreen from '../screen/Camera/PhotoScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -54,6 +55,11 @@ const RootNavigation = () => {
               name="InfoCharacter"
               component={InfoCharacter}
               options={{title: 'Character Information'}}
+            />
+            <Stack.Screen
+            name="Photo"
+            component={PhotoScreen}
+            options={{headerShown: false}}
             />
           </>
         )}

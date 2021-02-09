@@ -1,5 +1,3 @@
-import { Colors } from "react-native/Libraries/NewAppScreen";
-
 const colors = {
     turquoise: '#1abc9c',
     emerald: '#2ecc71',
@@ -24,8 +22,6 @@ const colors = {
     electromagnetic: '#2f3640',
 }
 
-
-var item = colors[Math.floor(Math.random() * colors.length)];
-
+export const allColors = Object.values(colors)
 
 export default colors;

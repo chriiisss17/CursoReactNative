@@ -1,4 +1,4 @@
-{
+user:{
     username: 'test',
     password: '1234',
 }

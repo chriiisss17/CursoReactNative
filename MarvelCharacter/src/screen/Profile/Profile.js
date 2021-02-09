@@ -12,6 +12,7 @@ import colors from '../../config/colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Photo from '../../components/Profile/Photo';
 import Loading from '../../components/commons/Loading';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   container: {
@@ -104,7 +105,7 @@ const Profile = ({}) => {
     );
   } else {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Loading data={{isLoading, setIsLoading}}>
           <Text style={styles.title}>Profile</Text>
           <View style={styles.containerImg}>
@@ -136,7 +137,7 @@ const Profile = ({}) => {
             <Text style={styles.button}>SAVE</Text>
           </TouchableOpacity>
         </Loading>
-      </View>
+      </ScrollView>
     );
   }
 };

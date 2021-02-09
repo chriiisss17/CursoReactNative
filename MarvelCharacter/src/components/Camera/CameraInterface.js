@@ -1,63 +1,8 @@
 import React, {PureComponent} from 'react';
-import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { RNCamera } from 'react-native-camera';
-
-const PendingView = () => (
-  <View
-    style={{
-      flex: 1,
-      backgroundColor: 'lightgreen',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    <Text>Waiting</Text>
-  </View>
-);
-
-export default class CameraInterface extends PureComponent {
-  render() {
-    return (
-      <View style={styles.container}>
-        <RNCamera
-          style={styles.preview}
-          type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.on}
-          androidCameraPermissionOptions={{
-            title: 'Permission to use camera',
-            message: 'We need your permission to use your camera',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}
-          androidRecordAudioPermissionOptions={{
-            title: 'Permission to use audio recording',
-            message: 'We need your permission to use your audio',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancel',
-          }}
-        >
-          {({ camera, status, recordAudioPermissionStatus }) => {
-            if (status !== 'READY') return <PendingView />;
-            return (
-              <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
-                <TouchableOpacity onPress={() => this.takePicture(camera)} style={styles.capture}>
-                  <Text style={{ fontSize: 14 }}> SNAP </Text>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-        </RNCamera>
-      </View>
-    );
-  }
-
-  takePicture = async function(camera) {
-    const options = { quality: 0.5, base64: true };
-    const data = await camera.takePictureAsync(options);
-    //  eslint-disable-next-line
-    console.log(data.uri);
-  };
-}
+import {View, StyleSheet, Text, Image} from 'react-native';
+import {RNCamera} from 'react-native-camera';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import colors from '../../config/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -79,6 +24,98 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     margin: 20,
   },
+  containerButton: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 0,
+    width: '20%',
+    height: '15%',
+    backgroundColor: colors.concrete,
+    borderRadius: 50,
+    margin: 10,
+    padding: 5,
+  },
+  button: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 50,
+    borderWidth: 5,
+    backgroundColor: colors.clouds,
+    borderColor: colors.concrete,
+  },
+  textButton: {},
+  containerPhoto: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 0,
+    right: 0,
+    width: '13%',
+    height: '10%',
+    backgroundColor: colors.concrete,
+    borderRadius: 50,
+    margin: 20,
+  },
+  photo: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 50,
+  },
 });
 
-AppRegistry.registerComponent('App', () => CameraInterface);
+export default class CameraInterface extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sourceUri: null,
+    };
+  }
+  render() {
+    const {navigation} = this.props;
+    const {sourceUri} = this.state;
+    return (
+      <View style={styles.container}>
+        <RNCamera
+          ref={(ref) => {
+            this.camera = ref;
+          }}
+          style={styles.preview}
+          type={RNCamera.Constants.Type.back}
+          flashMode={RNCamera.Constants.FlashMode.auto}
+          captureAudio={false}
+        />
+        <View style={styles.containerButton}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.takePicture()}>
+            <Text style={styles.textButton}></Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.containerPhoto}>
+          <TouchableOpacity
+            style={styles.photo}
+            onPress={() => this.showPhoto()}>
+            <Image
+              style={{width: '100%', height: '100%'}}
+              source={{uri: sourceUri}}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+  takePicture = async () => {
+    if (this.camera) {
+      const options = {quality: 0.5, base64: true};
+      const data = await this.camera.takePictureAsync(options);
+      if (data) {
+        this.setState({sourceUri: data.uri});
+      }
+    }
+  };
+  showPhoto = () => {
+    const {sourceUri} = this.state;
+    const {navigation} = this.props;
+    navigation.navigate('Photo', {sourceUri});
+  };
+}

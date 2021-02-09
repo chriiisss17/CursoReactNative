@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import colors from '../../config/colors';
+import colors, {allColors} from '../../config/colors';
 import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
 
+const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
 const styles = StyleSheet.create({
   container: {
     borderRadius: 10,
@@ -10,13 +11,13 @@ const styles = StyleSheet.create({
   },
   containerTitle: {
     alignItems: 'center',
-    backgroundColor: colors.silver,
+    backgroundColor: randomColor,
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
   },
   title: {
     fontSize: 20,
-    color: colors.midnightblue,
+    color: 'black',
   },
   containerImage: {
     height: 200,

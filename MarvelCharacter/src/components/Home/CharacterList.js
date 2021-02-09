@@ -6,7 +6,7 @@ import CharacterCard from './CharacterCard';
 const CharacterList = ({data, navigation}) => {
   return (
     <FlatList
-      style={{backgroundColor: colors.electromagnetic}}
+      style={{backgroundColor: '#263238'}}
       data={data}
       keyExtractor={({id}) => id.toString()}
       renderItem={({

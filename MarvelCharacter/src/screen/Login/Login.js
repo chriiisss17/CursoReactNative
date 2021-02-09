@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
 const Login = () => {
   const [username, setUser] = useState('');
   const [password, setPassword] = useState('');
-  //const submitData = () =>console.log(username,password);
   const {signIn} = React.useContext(LoginContext);
   return (
     <View style={styles.container}>

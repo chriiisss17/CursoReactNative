@@ -1,9 +1,11 @@
 import React from 'react';
 import CameraInterface from '../../components/Camera/CameraInterface';
 
-const Camera = () => {
+const Camera = ({navigation}) => {
     return(
-        <CameraInterface/>
+        <CameraInterface
+        {navigation}
+        />
     )
 }
 export default Camera;
