@@ -25,7 +25,7 @@ const AuthContext = ({children}) => {
         userToken = 'LOGIN_SUCCESSFULL';
         setIsLogin(true);
       }
-      dispatch({type: 'signIn', id: null, token: userToken});
+      dispatch({type: 'signIn', id: username, token: userToken});
     },
     isLogin,
   }));

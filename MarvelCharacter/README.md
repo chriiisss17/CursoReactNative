@@ -1,4 +1,2 @@
-user:{
-    username: 'user',
-    password: 'password',
-}
+username: 'user'
+password: 'password'
