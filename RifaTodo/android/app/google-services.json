@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1014784038002",
+    "project_id": "rifatodo-59952",
+    "storage_bucket": "rifatodo-59952.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014784038002:android:cdface44324c09efae5eeb",
+        "android_client_info": {
+          "package_name": "com.rifatodo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014784038002-8utn4qdgvqc1ddd4nu5ihu73a5o4b6ih.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rifatodo",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1014784038002-mm5btbl43vedluukg8o2p6b4gf1fnv0f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEv-vYhIFeiTRQbBcdOveW6cIXefdz2yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014784038002-mm5btbl43vedluukg8o2p6b4gf1fnv0f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

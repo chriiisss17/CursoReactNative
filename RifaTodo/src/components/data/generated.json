@@ -1,0 +1,60 @@
+{
+  "user": [
+    {
+      "mail": "valdezsweet@brainquil.com",
+      "raffle": {
+        "title": "Copete"
+      }
+    },
+    {
+      "mail": "victorianeal@shadease.com",
+      "raffle": {
+        "title": "Copete"
+      }
+    },
+    {
+      "mail": "simonpeterson@yurture.com",
+      "raffle": {
+        "title": "Copete"
+      }
+    }
+  ],
+  "raffle": [
+    {
+      "title": "Copete",
+      "img": "https://cdn.aarp.net/content/dam/aarp/health/healthy-living/2019/04/1140-quiz-alcohol-drinks-esp.imgcache.rev6d078193ee36e6f195ed2bf547c685cf.jpg",
+      "val": 9452,
+      "cant_n": 100,
+      "date_init": "Tuesday-07-2021",
+      "date_fin": "Sunday-08-2021",
+      "mail": "moniquemcfarland@coash.com",
+      "user": {
+        "mail": "valdezsweet@brainquil.com"
+      }
+    },
+    {
+      "title": "Copete",
+      "img": "https://cdn.aarp.net/content/dam/aarp/health/healthy-living/2019/04/1140-quiz-alcohol-drinks-esp.imgcache.rev6d078193ee36e6f195ed2bf547c685cf.jpg",
+      "val": 4188,
+      "cant_n": 73,
+      "date_init": "Friday-07-2021",
+      "date_fin": "Wednesday-08-2021",
+      "mail": "sextondiaz@aquazure.com",
+      "user": {
+        "mail": "victorianeal@shadease.com"
+      }
+    },
+    {
+      "title": "Copete",
+      "img": "https://cdn.aarp.net/content/dam/aarp/health/healthy-living/2019/04/1140-quiz-alcohol-drinks-esp.imgcache.rev6d078193ee36e6f195ed2bf547c685cf.jpg",
+      "val": 7678,
+      "cant_n": 21,
+      "date_init": "Wednesday-07-2021",
+      "date_fin": "Sunday-08-2021",
+      "mail": "esperanzaacosta@navir.com",
+      "user": {
+        "mail": "simonpeterson@yurture.com"
+      }
+    }
+  ]
+}
